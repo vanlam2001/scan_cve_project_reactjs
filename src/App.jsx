@@ -1,10 +1,19 @@
 import React from 'react'
-import Scan_Cve_Telerik from './Components/Scan_Cve_Telerik'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { userRoute } from './routes/userRoute'
+
+
 
 const App = () => {
   return (
     <>
-      <Scan_Cve_Telerik />
+      <BrowserRouter>
+        <Routes>
+          {userRoute.map((item, index) => {
+            return <Route key={index} path={item.path} element={item.component} />
+          })}
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
