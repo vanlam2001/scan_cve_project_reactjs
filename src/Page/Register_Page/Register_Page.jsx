@@ -64,7 +64,7 @@ const Register_Page = () => {
 
                     <Form.Item
                         name="password"
-                        label="Password"
+                        label="Mật khẩu"
                         rules={[
                             {
                                 required: true,
