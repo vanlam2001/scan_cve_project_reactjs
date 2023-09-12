@@ -5,9 +5,11 @@ import './index.css'
 import { configureStore } from '@reduxjs/toolkit'
 import spinnerSlice from './Toolkits/spinnerSlice.js'
 import { Provider } from 'react-redux'
+import userSlice from './Toolkits/userSlice.js'
 const store = configureStore({
   reducer: {
-    spinnerSlice: spinnerSlice
+    spinnerSlice: spinnerSlice,
+    userSlice: userSlice
   }
 })
 
