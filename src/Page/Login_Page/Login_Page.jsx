@@ -2,8 +2,40 @@ import React from 'react'
 import { UserOutlined, LockOutlined, UserAddOutlined, MailOutlined, PhoneOutlined, EyeOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import { NavLink } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { localUserServ } from '../../services/localService';
+import { userServ } from '../../services/userService';
+import { setLoginUser } from '../../Toolkits/userSlice';
 
 const Login_Page = () => {
+    let dispatch = useDispatch();
+
+    let fillForm = () => {
+        let info = localUserServ.get();
+        if (info != null) {
+            return info;
+        } else {
+            return { username: "", password: "" }
+        }
+    }
+    const onFinish = (values) => {
+        userServ.loginUser(values)
+            .then((res) => {
+                message.success("Đăng nhập thành công");
+                dispatch(setLoginUser(res.data));
+                localUserServ.set(res.data)
+                setTimeout(() => {
+                    window.location.href = '/'
+                }, 1500);
+            })
+            .catch((err) => {
+                message.error("Đăng nhập thất bại")
+                console.log(err)
+            })
+    }
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
     return (
         <div>
             {/* component */}
@@ -32,7 +64,9 @@ const Login_Page = () => {
                     name="register"
                     initialValues={{
                         remember: true,
-                    }}
+                        username: fillForm().username,
+                        password: fillForm().password
+                    }} onFinish={onFinish} onFinishFailed={onFinishFailed}
                     className="w-full max-w-xl bg-white rounded-lg shadow-md p-6"
                 >
 
@@ -40,7 +74,7 @@ const Login_Page = () => {
                         <div className="w-full md:w-full px-3 mb-6">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">Tên người dùng</label>
                             <Form.Item
-                                name="taikhoan"
+                                name="username"
                                 rules={[
                                     {
                                         required: true,

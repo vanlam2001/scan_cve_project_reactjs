@@ -4,8 +4,10 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { useSelector } from 'react-redux'
 import { localUserServ } from '../../services/localService'
 import { NavLink } from 'react-router-dom'
+import classNames from 'classnames';
 const Header_UserInfo = () => {
     let { userInfo } = useSelector(state => state.userSlice)
+
     let handleLogout = () => {
         localUserServ.remove();
         window.location = '/';
@@ -18,11 +20,8 @@ const Header_UserInfo = () => {
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="absolute -inset-1.5" />
                         <span className="sr-only">Open user menu</span>
-                        <img
-                            className="h-8 w-8 rounded-full"
-                            src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
-                            alt=""
-                        />
+
+                        <span className='text-gray-100'>{userInfo.username}</span>
                     </Menu.Button>
                 </div>
                 <Transition
@@ -58,6 +57,7 @@ const Header_UserInfo = () => {
                         <Menu.Item>
                             {({ active }) => (
                                 <a
+                                    onClick={handleLogout}
                                     href="#"
                                     className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                 >
@@ -73,17 +73,20 @@ const Header_UserInfo = () => {
     else {
         return (
             <>
-                <NavLink to={"/login"}>
-                    <a href="" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                        Đăng nhập
-                    </a>
-                </NavLink>
+                <div className='flex items-center '>
+                    <NavLink className="m-4 text-sm font-semibold leading-6 text-gray-100" to={"/login"}>
 
-                <NavLink to={"/register"}>
-                    <a href="" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                        Đăng nhập
+
+                    </NavLink>
+
+                    <NavLink className="text-sm font-semibold leading-6 text-gray-100" to={"/register"}>
+
                         Đăng ký
-                    </a>
-                </NavLink>
+
+                    </NavLink>
+                </div>
+
             </>
         )
     }
