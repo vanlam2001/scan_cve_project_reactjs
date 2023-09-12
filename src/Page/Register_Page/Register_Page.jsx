@@ -78,25 +78,6 @@ const Register_Page = () => {
                     </Form.Item>
 
                     <Form.Item
-                        name="email"
-                        label="Địa chỉ email"
-                        rules={[
-                            {
-                                type: 'email',
-                                message: 'Thông tin nhập không phải là địa chỉ email',
-                            },
-                            {
-                                required: true,
-                                message: 'Vui lòng nhập email!',
-                            },
-                        ]}
-                    >
-                        <Input prefix={<MailOutlined />}
-                            placeholder='Email' />
-                    </Form.Item>
-
-
-                    <Form.Item
                         name="password"
                         label="Mật khẩu"
                         rules={[
