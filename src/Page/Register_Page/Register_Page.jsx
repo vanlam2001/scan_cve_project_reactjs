@@ -1,10 +1,41 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined, UserAddOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import userSlice from '../../Toolkits/userSlice';
+import { userServ } from '../../services/userService';
+import { closeFormSuccess, registerSuccess } from '../../Toolkits/formSuccessSlice';
+import { localUserServ } from '../../services/localService';
 const Register_Page = () => {
+    let dispatch = useDispatch();
+    let navigate = useNavigate();
 
+    const onFinish = async (values) => {
+        let fetchRegisterUser = async () => {
+            try {
+                let response = await userServ.registerUser(values);
+                dispatch((registerSuccess()));
+                localUserServ.set(response.data)
+                message.success("Đăng ký thành công")
 
+                setTimeout(() => {
+                    dispatch((closeFormSuccess()))
+                }, 2000);
+
+                setTimeout(() => {
+                    navigate('/login');
+                }, 300);
+            }
+            catch (error) {
+                message.error(error.response.data);
+            }
+        }
+        fetchRegisterUser();
+    }
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo)
+    }
     return (
         <div>
             <div className="text-center mt-24">
@@ -23,14 +54,17 @@ const Register_Page = () => {
             </div>
             <div className="flex justify-center my-2 mx-4 md:mx-0">
                 <Form
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
                     name="register"
                     initialValues={{
                         remember: true,
                     }}
+
                     className="w-full max-w-xl bg-white rounded-lg shadow-md p-6"
                 >
                     <Form.Item
-                        name="taikhoan"
+                        name="username"
                         label="Tên người dùng"
                         rules={[
                             {
@@ -80,7 +114,7 @@ const Register_Page = () => {
                     </Form.Item>
 
                     <Form.Item
-                        name="matkhau"
+                        name="confirm_password"
                         label="Nhập lại mật khẩu"
                         dependencies={['password']}
                         hasFeedback
@@ -128,7 +162,7 @@ const Register_Page = () => {
                             htmlType="submit"
                             className="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none "
                         >
-                            Sign in
+                            Đăng ký
                         </button>
                     </Form.Item>
                 </Form>

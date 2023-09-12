@@ -6,10 +6,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import spinnerSlice from './Toolkits/spinnerSlice.js'
 import { Provider } from 'react-redux'
 import userSlice from './Toolkits/userSlice.js'
+import formSuccessSlice from './Toolkits/formSuccessSlice.js'
 const store = configureStore({
   reducer: {
     spinnerSlice: spinnerSlice,
-    userSlice: userSlice
+    userSlice: userSlice,
+    formSuccessSlice: formSuccessSlice
   }
 })
 

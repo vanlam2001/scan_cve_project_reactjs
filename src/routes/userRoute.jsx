@@ -3,6 +3,14 @@ import Layout from "../Layout/Layout";
 import Login_Page from "../Page/Login_Page/Login_Page";
 import Register_Page from "../Page/Register_Page/Register_Page";
 
+
+import { localUserServ } from "../services/localService";
+
+const isAuthenticated = () => {
+    const userInfo = localUserServ.get();
+    return userInfo !== null;
+}
+
 export const userRoute = [
     {
         path: '/',
@@ -10,11 +18,12 @@ export const userRoute = [
     },
     {
         path: '/login',
-        component: <Layout Component={Login_Page}></Layout>
+        component: isAuthenticated() ? <Layout Component={Home_Page} /> : <Layout Component={Login_Page} />
     },
     {
         path: '/register',
-        component: <Layout Component={Register_Page}></Layout>
+        component: isAuthenticated() ? <Layout Component={Home_Page} /> : <Layout Component={Register_Page} />
     },
+
 
 ]
