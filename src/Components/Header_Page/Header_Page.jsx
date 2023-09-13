@@ -1,9 +1,10 @@
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Header_UserInfo from './Header_UserInfo'
+import { NavLink } from 'react-router-dom'
 
 const navigation = [
-    { name: 'Trang chủ', href: '#', current: true },
+    { name: 'Trang chủ', href: '/', current: true },
     { name: 'Tin tức', href: '#', current: false },
     { name: 'Khai thác', href: '#', current: false },
     { name: 'Các websie bị hack', href: '#', current: false },
@@ -37,11 +38,14 @@ export default function Header_Page() {
                                 </div>
                                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                                     <div className="flex flex-shrink-0 items-center">
-                                        <img
-                                            className="h-8 w-auto"
-                                            src="https://www.emojimeaning.com/img/img-apple-160/1f1fb-1f1f3.png"
-                                            alt="Your Company"
-                                        />
+                                        <NavLink to={'/'}>
+                                            <img
+                                                className="h-8 w-auto"
+                                                src="https://www.emojimeaning.com/img/img-apple-160/1f1fb-1f1f3.png"
+                                                alt="Your Company"
+                                            />
+                                        </NavLink>
+
 
                                     </div>
                                     <div className="hidden sm:ml-6 sm:block">
