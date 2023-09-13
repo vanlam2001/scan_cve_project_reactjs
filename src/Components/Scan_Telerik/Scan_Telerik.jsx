@@ -51,8 +51,15 @@ function Scan_Telerik() {
             const response = await scanCVE.scan_cve_2017_9248(formData)
             setResults(response.data);
         } catch (error) {
-            console.error('Error:', error);
-            message.error('Đã xảy ra lỗi khi gọi API.');
+            if (error.response && error.response.status === 400) {
+                setResults('Chưa có dữ liệu đầu vào, Vui lòng nhập website hoặc tệp')
+                message.error('Chưa có dữ liệu đầu vào, Vui lòng nhập website hoặc tệp')
+            } else if (error.response && error.response.status === 401) {
+                setResults(['Vui lòng nhập url hợp lệ bắt đầu bằng http://example.com hoặc https://example.com']);
+            } else {
+                setResult('Đã xảy ra lỗi khi quét')
+                message.error('Đã xảy ra lỗi khi quét')
+            }
         } finally {
             setLoading(false);
         }
@@ -60,9 +67,9 @@ function Scan_Telerik() {
 
     return (
         <>
-            <div className='container mx-auto mt-8'>
+            <div className='container mx-auto mt-3'>
 
-                <h1 className='text-center'>Kiểm tra telerik</h1>
+                <h1 className="text-3xl font-semibold mb-4">Kiểm tra telerik</h1>
             </div>
             <div className="container mx-auto mt-8">
 
@@ -80,7 +87,16 @@ function Scan_Telerik() {
                     </Upload>
                 </div>
                 <div className="mb-4">
-                    <Button onClick={handleSubmit} loading={loading}>
+                    <Button
+                        style={{
+                            backgroundColor: 'dodgerblue',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer'
+                        }}
+                        onClick={handleSubmit}
+                        loading={loading}>
                         Kiểm tra CVE-2017-9248
                     </Button>
                 </div>
