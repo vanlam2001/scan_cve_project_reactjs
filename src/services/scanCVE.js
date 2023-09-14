@@ -7,7 +7,7 @@ export const scanCVE = {
     scan_cve_2017_5487: (url) => {
         return https.post('/api/check-vuln-cve-2017-5487', { url });
     },
-    scan_cve_2020_0786: (targetIp) => {
-        return https.post('/api/exploit-cve-2020-0796', { ip_address: targetIp })
+    scan_cve_2020_0786: (ipAddress) => {
+        return https.post('/api/check-vuln-cve-2020-0786', { ip_address: ipAddress });
     }
 }

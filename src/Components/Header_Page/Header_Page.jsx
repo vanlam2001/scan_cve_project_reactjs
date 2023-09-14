@@ -4,9 +4,9 @@ import Header_UserInfo from './Header_UserInfo'
 import { NavLink } from 'react-router-dom'
 
 const navigation = [
-    { name: 'Trang chủ', href: '/', current: true },
-    { name: 'Tin tức', href: '#', current: false },
-    { name: 'Khai thác', href: '#', current: false },
+    { name: 'Trang chủ', href: '/', current: false },
+    { name: 'Tin tức', href: '', current: false },
+    { name: 'Khai thác', href: '/warning', current: false },
     { name: 'Các websie bị hack', href: '#', current: false },
     { name: 'Báo cáo lưu trữ', href: '#', current: false },
 ]
