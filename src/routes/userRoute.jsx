@@ -1,5 +1,7 @@
 
+import { Exploit_CVE_2020_0796 } from "../Components/Exploit_CVE_2020_0796/Exploit_CVE_2020_0796";
 import Scan_CVE_2017_5487 from "../Components/Scan_CVE_2017_5487/Scan_CVE_2017_5487";
+import Scan_CVE_2020_0796 from "../Components/Scan_CVE_2020-0796/Scan_CVE_2020_0796";
 import Scan_Telerik from "../Components/Scan_Telerik/Scan_Telerik";
 import Home_Page from "../Home_Page/HomePage";
 import Layout from "../Layout/Layout";
@@ -46,7 +48,25 @@ export const userRoute = [
                     {localUserServ.get() ? "Bạn chưa đăng nhập tài khoản" : "Hãy đăng nhập hoặc tạo tài khoản"}
                 </div>
             )
+    },
+    {
+        path: '/exploit-cve-2020-0796',
+        component: localUserServ.get()?.maLoaiNguoiDung === 'user'
+            ? <Layout Component={Exploit_CVE_2020_0796} />
+            : (
+                <div>
+                    {localUserServ.get() ? "Bạn chưa đăng nhập tài khoản" : "Hãy đăng nhập hoặc tạo tài khoản"}
+                </div>
+            )
+    },
+    {
+        path: '/scan-cve-2020-0786',
+        component: localUserServ.get()?.maLoaiNguoiDung === 'user'
+            ? <Layout Component={Scan_CVE_2020_0796} />
+            : (
+                <div>
+                    {localUserServ.get() ? "Bạn chưa đăng nhập tài khoản" : "Hãy đăng nhập hoặc tạo tài khoản"}
+                </div>
+            )
     }
-
-
 ]

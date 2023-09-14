@@ -28,9 +28,14 @@ const Login_Page = () => {
                     window.location.href = '/'
                 }, 1500);
             })
-            .catch((err) => {
-                message.error("Đăng nhập thất bại")
-                console.log(err)
+            .catch((error) => {
+                if (error.response && error.response.status === 404) {
+                    message.error('Tài khoản không tồn tại')
+                } else if (error.response && error.response.status === 401) {
+                    message.error('Sai mật khẩu')
+                } else {
+                    message.error('Đã xảy ra lỗi khi đăng nhập')
+                }
             })
     }
     const onFinishFailed = (errorInfo) => {
