@@ -77,7 +77,7 @@ const Login_Page = () => {
 
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-full px-3 mb-6">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">Tên người dùng</label>
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">Tài khoản</label>
                             <Form.Item
                                 name="username"
                                 rules={[
@@ -93,7 +93,7 @@ const Login_Page = () => {
                             </Form.Item>
                         </div>
                         <div className="w-full md:w-full px-3 mb-6">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">Password</label>
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="Password">Mật khẩu</label>
                             <Form.Item
                                 name="password"
                                 rules={[
@@ -113,14 +113,14 @@ const Login_Page = () => {
                         <div className="w-full flex items-center justify-between px-3 mb-3 ">
                             <label htmlFor="remember" className="flex items-center w-1/2">
                                 <input type="checkbox" name id className="mr-1 bg-white shadow" />
-                                <span className="text-sm text-gray-700 pt-1">Remember Me</span>
+                                <span className="text-sm text-gray-700 pt-1">Ghi nhớ</span>
                             </label>
                             <div className="w-1/2 text-right">
-                                <a href="#" className="text-blue-500 text-sm tracking-tight">Forget your password?</a>
+                                <a href="#" className="text-blue-500 text-sm tracking-tight">Quên mật khẩu</a>
                             </div>
                         </div>
                         <div className="w-full md:w-full px-3">
-                            <button className="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none ">Sign in</button>
+                            <button className="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none ">Đăng nhập</button>
                         </div>
                     </div>
                 </Form>

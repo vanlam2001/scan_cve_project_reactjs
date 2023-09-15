@@ -10,6 +10,7 @@ import NotFound_Page from "../Page/NotFound_Page/NotFound_Page";
 import Warning_Page from "../Components/Warning_Page/Warning_Page";
 
 
+
 const isAuthenticated = () => {
     const userInfo = localUserServ.get();
     return userInfo !== null;
@@ -39,7 +40,7 @@ export const userRoute = [
             : (
                 <div>
                     {localUserServ.get() ?
-                        "Bạn chưa đăng nhập tài khoản" : "Hãy đăng nhập hoặc tạo tài khoản"}
+                        "Bạn chưa đăng nhập tài khoản" : <Layout Component={Login_Page} />}
                 </div>
             )
     },
@@ -51,7 +52,7 @@ export const userRoute = [
             : (
                 <div>
                     {localUserServ.get() ?
-                        "Bạn chưa đăng nhập tài khoản" : "Hãy đăng nhập hoặc tạo tài khoản"}
+                        "Bạn chưa đăng nhập tài khoản" : <Layout Component={Login_Page} />}
                 </div>
             )
     },
@@ -61,7 +62,7 @@ export const userRoute = [
             ? <Layout Component={Scan_CVE_2017_5487} />
             : (
                 <div>
-                    {localUserServ.get() ? "Bạn chưa đăng nhập tài khoản" : "Hãy đăng nhập hoặc tạo tài khoản"}
+                    {localUserServ.get() ? "Bạn chưa đăng nhập tài khoản" : <Layout Component={Login_Page} />}
                 </div>
             )
     },
@@ -72,7 +73,7 @@ export const userRoute = [
             ? <Layout Component={CVE_2020_0796} />
             : (
                 <div>
-                    {localUserServ.get() ? "Bạn chưa đăng nhập tài khoản" : "Hãy đăng nhập hoặc tạo tài khoản"}
+                    {localUserServ.get() ? "Bạn chưa đăng nhập tài khoản" : <Layout Component={Login_Page} />}
                 </div>
             )
     },
