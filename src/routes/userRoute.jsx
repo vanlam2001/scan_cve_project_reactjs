@@ -8,6 +8,7 @@ import { localUserServ } from "../services/localService";
 import CVE_2020_0796 from "../Components/CVE_2020-0796/CVE_2020_0796";
 import NotFound_Page from "../Page/NotFound_Page/NotFound_Page";
 import Warning_Page from "../Components/Warning_Page/Warning_Page";
+import Recovery_Password from "../Page/Recovery_Password/Recovery_Password";
 
 
 
@@ -32,6 +33,10 @@ export const userRoute = [
     {
         path: '*',
         component: <Layout Component={NotFound_Page} />
+    },
+    {
+        path: '/quen-mat-khau',
+        component: <Layout Component={Recovery_Password} />
     },
     {
         path: '/warning',

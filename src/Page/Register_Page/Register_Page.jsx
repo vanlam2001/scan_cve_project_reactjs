@@ -1,9 +1,8 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, message } from 'antd';
+import { Form, Input, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined, UserAddOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import userSlice from '../../Toolkits/userSlice';
 import { userServ } from '../../services/userService';
 import { closeFormSuccess, registerSuccess } from '../../Toolkits/formSuccessSlice';
 import { localUserServ } from '../../services/localService';
