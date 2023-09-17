@@ -7,14 +7,16 @@ import spinnerSlice from './Toolkits/spinnerSlice.js'
 import { Provider } from 'react-redux'
 import userSlice from './Toolkits/userSlice.js'
 import formSuccessSlice from './Toolkits/formSuccessSlice.js'
-import passwordReset from './Toolkits/restPassword.js'
+import restPasswordSlice from './Toolkits/restPasswordSlice.js'
+
+
 
 const store = configureStore({
   reducer: {
     spinnerSlice: spinnerSlice,
     userSlice: userSlice,
     formSuccessSlice: formSuccessSlice,
-    passwordReset: passwordReset
+    restPasswordSlice: restPasswordSlice
   }
 })
 

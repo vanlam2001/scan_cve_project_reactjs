@@ -7,7 +7,7 @@ export const userServ = {
     registerUser: (userInfo) => {
         return https.post('/api/Dang-ky', userInfo);
     },
-    reset_password: (recovery_password) => {
+    resetPassword: (recovery_password) => {
         return https.post('/api/Khoi-phuc-mat-khau', recovery_password);
     }
 }
